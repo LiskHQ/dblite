@@ -161,7 +161,7 @@ var
  *                        db.query('SELECT table.a, table.other FROM table', ['a', 'b']);
  *                        [{a:'first value', b:'second'},{a:'row2 value', b:'row2'}]
  *
- *                        
+ *
  *                        db.query('SELECT table.a, table.other FROM table', ['a', 'b']);
  *                        [{a:'first value', b:'second'},{a:'row2 value', b:'row2'}]
  *  callback:Function
@@ -255,7 +255,7 @@ function dblite() {
 
   // common error helper
   function onerror(data) {
-    if($callback && 1 < $callback.length) {  
+    if($callback && 1 < $callback.length) {
       // there is a callback waiting
       // and there is more than an argument in there
       // the callback is waiting for errors too
