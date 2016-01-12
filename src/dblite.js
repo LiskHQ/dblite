@@ -449,8 +449,6 @@ function dblite() {
 
   // Send query to database. Main method
   self.query = function(string) {
-    if (typeof string !== 'string') throw new Error('Argument #1 should be a string');
-
     string = {
       query: string,
       dontParse: false
