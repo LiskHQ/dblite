@@ -83,23 +83,8 @@ var
     ;
 
     // what kind of End Of Line we have here ?
-    EOL = sqliteVersion.length && sqliteVersion.filter(function (n, i) {
-      n = parseInt(n, 10);
-      switch (i) {
-        case 0:
-          return n >= 3;
-        case 1:
-          return n >= 8;
-        case 2:
-          return n >= 6;
-      }
-      return false;
-    }).length === sqliteVersion.length ?
-      '\r\n' :
-      require('os').EOL || (
-        WIN32 ? '\r\n' : '\n'
-      )
-    ;
+    // EOL not worked on Windows 7 with sqlite3 (3.8.8.1), because it's return \n, not Windows EOF \r\n
+    EOL = '\n';
 
     // what's EOL length? Used to properly parse data
     EOL_LENGTH = EOL.length;
