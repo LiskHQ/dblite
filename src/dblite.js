@@ -869,7 +869,7 @@ dblite.escape = escape;
 // example:
 // rows.map(dblite.row2object, fields)
 dblite.row2object = row2object;
-
+dblite.row2parsed = row2parsed;
 dblite.parseFields = parseFields;
 
 // that's it!
