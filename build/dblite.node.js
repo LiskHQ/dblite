@@ -581,7 +581,7 @@ function dblite() {
                 string
               ));
               // keep checking for possible following operations
-              process.nextTick(next);
+              setImmediate(next);
               break;
             }
             fields = params;
