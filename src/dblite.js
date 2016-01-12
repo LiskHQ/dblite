@@ -734,7 +734,11 @@ function row2parsed(row) {
     length = fields.length,
     i = 0; i < length; i++
   ) {
-    out[fields[i]] = parsers[i](row[i]);
+    if (parsers[i] === Buffer) {
+      out[fields[i]] = parsers[i](row[i], 'hex');
+    } else {
+      out[fields[i]] = parsers[i](row[i]);
+    }
   }
   return out;
 }
@@ -751,12 +755,15 @@ function escape(what) {
         SINGLE_QUOTES, SINGLE_QUOTES_DOUBLED
       ) + "'";
     case 'object':
-      return what == null ?
-        'null' :
-        ("'" + JSON.stringify(what).replace(
+      if (what == null) {
+        return 'null';
+      } else if (Buffer.isBuffer(what)) {
+        return "X'" + what.toString('hex') + "'";
+      } else {
+        return ("'" + JSON.stringify(what).replace(
           SINGLE_QUOTES, SINGLE_QUOTES_DOUBLED
-        ) + "'")
-      ;
+        ) + "'");
+      }
     // SQLite has no Boolean type
     case 'boolean':
       return what ? '1' : '0'; // 1 => true, 0 => false
