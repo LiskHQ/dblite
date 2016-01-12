@@ -861,7 +861,7 @@ function escape(what) {
       if (isFinite(what)) return '' + what;
   }
   // all other cases
-  throw new Error('unsupported data');
+  throw new Error('unsupported data ' + what);
 }
 
 // makes an SQL statement OK for dblite <=> sqlite communications
