@@ -637,20 +637,20 @@ function dblite() {
   // around instead of serializing and de-serializing it
   // all the time. Ideally this is a scenario for clusters
   // no need to usually do manually anything otherwise.
-  dblite.parseCSV = parseCSV;
+  self.parseCSV = parseCSV;
 
   // how to manually escape data
   // might be handy to write directly SQL strings
   // instead of using handy paramters Array/Object
   // usually you don't want to do this
-  dblite.escape = escape;
+  self.escape = escape;
 
   // converter rows to objects for map method.
   // example:
   // rows.map(dblite.row2object, fields)
-  dblite.row2object = row2object;
-  dblite.row2parsed = row2parsed;
-  dblite.parseFields = parseFields;
+  self.row2object = row2object;
+  self.row2parsed = row2parsed;
+  self.parseFields = parseFields;
 
   return self;
 }
